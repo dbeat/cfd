@@ -11,6 +11,7 @@ TEST_DIR = Path(os.path.abspath(__file__)).ancestor(1)
 REF_DIR = TEST_DIR.child("references")
 
 
+@pytest.mark.skip("skipped for now")
 class TestPoiseuilleAxi:
     r""""""
     def test_geom(self, fix):

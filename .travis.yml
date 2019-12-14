@@ -17,6 +17,7 @@ addons:
       # - dvipng
 
 before_install:
+  - mkdir -p docs/_build
   - wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME/miniconda3.sh
   - chmod +x $HOME/miniconda3.sh
   - "$HOME/miniconda3.sh -b;"
@@ -36,7 +37,7 @@ install:
 script:
   # - python run.py -r
   # https://dev.to/j0nimost/using-codecov-with-travis-ci-pytest-cov-1dfj
-  - py.test  --cov-report term --cov=app/test/
+  - py.test  --cov-report term --cov=cfd/test/
 #  - xvfb-run make test
   # https://gist.github.com/kemingy/7e715ceb1b96f8023bea89a82974a181
   # https://github.com/Syntaf/travis-sphinx
