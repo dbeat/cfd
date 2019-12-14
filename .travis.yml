@@ -43,9 +43,6 @@ script:
  - sphinx-build -b html docs/. /docs/_build/.
  # - travis-sphinx build --source=/docs/_build/
 
-# env:
-#   - CODECOV_TOKEN=<token> #IF ONLY YOU HAVE A PRIVATE REPOSITORY
-
 after_success:
     # - travis-sphinx deploy
     - codecov
