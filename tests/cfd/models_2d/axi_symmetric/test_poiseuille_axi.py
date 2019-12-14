@@ -21,13 +21,14 @@ class TestPoiseuilleAxi:
         :param fix: The fixture --see
           :func:`fix<tests.cfd.models_2d.axi_symmetric.conftest.fix>`
         """
+        print(dolfin.__version__)
         p_axi = fix.object.get('p_axi')
         size = p_axi.size
         desired = (size[0] * size[1]).magnitude
         mesh = p_axi._mesh
-        dom = dolfin.cpp.mesh.MeshFunctionSizet(mesh, mesh.mvc_dom())
-        dx = dolfin.Measure("dx", domain=mesh, subdomain_data=dom)
-        actual = dolfin.assemble(dolfin.Constant(1.) * dx)
+        # dom = dolfin.cpp.mesh.MeshFunctionSizet(mesh, mesh.mvc_dom())
+        # dx = dolfin.Measure("dx", domain=mesh, subdomain_data=dom)
+        actual = dolfin.assemble(dolfin.Constant(1.) * dolfin.dx)
         np.testing.assert_almost_equal(actual, desired, 7, 'error', True)
 
     def test_strain_rate_tensor(self, fix):
