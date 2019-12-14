@@ -34,8 +34,7 @@ install:
   - pip install travis-sphinx nose-timer
 
 script:
-  - xvfb-run make test
-  - python pack.py
+  - xvfb-run python pack.py
 #  - "./docs/update_apidocs.sh"
 #  - nosetests -v --with-timer --with-coverage --cover-erase --cover-inclusive --cover-package=pySDC/core,pySDC/implementations,pySDC/helpers,pySDC/tutorial,pySDC/projects --cover-html --cover-html-dir=doc/build/test_coverage pySDC/tests
 #  - travis-sphinx build
