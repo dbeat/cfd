@@ -28,6 +28,7 @@ install:
   # - conda install --yes -c conda-forge --file requirements.txt
   - conda list
   - pip install -r requirements.txt
+  - pip install lxml
   - pip install --user travis-sphinx
   - export PATH=$HOME/.local/bin:$PATH
 
@@ -38,7 +39,7 @@ script:
   # https://gist.github.com/kemingy/7e715ceb1b96f8023bea89a82974a181
   # https://github.com/Syntaf/travis-sphinx
   # - sphinx-build -b html docs/. docs/_build/.
-  # - travis-sphinx build --source=docs/.
+  - travis-sphinx build -n --source=docs/.
 
 after_success:
   # - travis-sphinx deploy
