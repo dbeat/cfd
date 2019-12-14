@@ -34,7 +34,7 @@ install:
   - export PATH=$HOME/.local/bin:$PATH
 
 script:
-  - python run.py -r
+  # - python run.py -r
   # https://dev.to/j0nimost/using-codecov-with-travis-ci-pytest-cov-1dfj
   - py.test  --cov-report term --cov=app/test/
 #  - xvfb-run make test

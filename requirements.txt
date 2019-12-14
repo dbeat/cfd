@@ -1,6 +1,6 @@
 Click==7.0
 cppimport==18.11.8
-meshio==3.1.1
+meshio==3.3.0
 numpy==1.17.4
 Pint==0.9
 pygmsh==6.0.2
