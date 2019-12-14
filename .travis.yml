@@ -13,8 +13,10 @@ addons:
     packages:
 
 before_install:
-  - sudo apt install libxml2-dev libxslt1-dev python3-dev
-  - sudo apt install python3-lxml
+  # https://lxml.de/installation.html
+  - sudo apt-get install python3-lxml
+  - sudo apt-get install libxml2-dev libxslt-dev python-dev
+  - sudo apt-get build-dep python3-lxml
   - wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME/miniconda3.sh
   - chmod +x $HOME/miniconda3.sh
   - "$HOME/miniconda3.sh -b;"
@@ -28,7 +30,7 @@ install:
   # - conda install --yes -c conda-forge --file requirements.txt
   - conda list
   - pip install -r requirements.txt
-  - pip install lxml
+  - pip install lxml codecov
   - pip install --user travis-sphinx
   - export PATH=$HOME/.local/bin:$PATH
 
