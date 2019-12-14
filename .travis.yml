@@ -25,12 +25,13 @@ before_install:
   - sudo apt-get install python3-lxml
   - sudo apt-get install libxml2-dev libxslt-dev python-dev
   - sudo apt-get build-dep python3-lxml
+  - sudo apt-get install libhdf5-dev
 
 install:
   # - conda install --yes -c conda-forge --file requirements.txt
   - conda list
   - pip install -r requirements.txt
-  - pip install lxml codecov
+  - pip install lxml codecov h5py
   - pip install --user travis-sphinx
   - export PATH=$HOME/.local/bin:$PATH
 
