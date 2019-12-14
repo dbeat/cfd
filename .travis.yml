@@ -22,10 +22,9 @@ before_install:
   - conda update --yes -n base -c defaults conda
 
 install:
-  - conda install --yes -c conda-forge # --file requirements.txt
+  # - conda install --yes -c conda-forge --file requirements.txt
   - conda create -n fenicsproject -c conda-forge fenics
   - source activate fenicsproject
-  # - conda install --yes --file requirements.txt
   - conda list
   - pip install travis-sphinx nose-timer
 
