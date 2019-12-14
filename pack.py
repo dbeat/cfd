@@ -5,15 +5,13 @@ import numpy as np
 import scipy.constants
 import cppimport
 import sphinx
-import PyQt5
 import pint
 import unipath
 import pygmsh
 import meshio
-import vtk
 import mshr
-
-
+import PyQt5
+import vtk
 
 
 def main():

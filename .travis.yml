@@ -24,6 +24,7 @@ before_install:
   - conda update --yes -n base -c defaults conda
   - conda install --yes -c menpo vtk=8
   - conda install --yes -c conda-forge fenics mshr pybind11 pip
+  - conda install -c anaconda pyqt
 
 install:
   # - conda install --yes -c conda-forge --file requirements.txt
