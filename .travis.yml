@@ -20,7 +20,7 @@ before_install:
   - "$HOME/miniconda3.sh -b;"
   - export PATH=/home/travis/miniconda3/bin:$PATH
   - conda update --yes -n base -c defaults conda
-  - conda install -c menpo vtk=7
+  - conda install -c menpo vtk=8
 
 install:
   # - conda install --yes -c conda-forge --file requirements.txt
