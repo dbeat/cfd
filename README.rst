@@ -1,6 +1,8 @@
 ====
 CFD
 ====
+.. image:: https://travis-ci.com/dbeat/cfd.svg?branch=master
+    :target: https://travis-ci.com/dbeat/cfd
 
 A FEM code used to investigate CDF problems.
 
