@@ -23,8 +23,8 @@ before_install:
   - export PATH=/home/travis/miniconda3/bin:$PATH
   - conda update --yes -n base -c defaults conda
   - conda install --yes -c menpo vtk=8
-  - conda install --yes -c conda-forge fenics mshr gmsh pybind11 pip
   - conda install --yes -c anaconda pyqt
+  - conda install --yes -c conda-forge fenics mshr gmsh pybind11 pip
 
 install:
   # - conda install --yes -c conda-forge --file requirements.txt
