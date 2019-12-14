@@ -29,7 +29,7 @@ project = u'cfd'
 copyright = u'2020, Francois Roy'
 author = u'Indigo Francois Roy'
 html_logo = 'images/logo.png'
-html_favicon = 'images/favicon.jpg'
+html_favicon = 'images/favicon.png'
 
 extensions = [
     'sphinx.ext.mathjax',

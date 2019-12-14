@@ -1,4 +1,4 @@
-sudo: false
+# sudo: false
 dist: bionic
 services:
   - xvfb
@@ -11,13 +11,10 @@ python:
 addons:
   apt:
     packages:
-      # - texlive-latex-recommended
-      # - texlive-fonts-recommended
-      # - texlive-latex-extra
-      # - dvipng
 
 before_install:
-  - mkdir -p docs/_build
+  - sudo apt install libxml2-dev libxslt1-dev python-dev
+  - sudo apt install python-lxml
   - wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME/miniconda3.sh
   - chmod +x $HOME/miniconda3.sh
   - "$HOME/miniconda3.sh -b;"
@@ -35,14 +32,13 @@ install:
   - export PATH=$HOME/.local/bin:$PATH
 
 script:
-  # - python run.py -r
   # https://dev.to/j0nimost/using-codecov-with-travis-ci-pytest-cov-1dfj
   - py.test  --cov-report term --cov=cfd/test/
 #  - xvfb-run make test
   # https://gist.github.com/kemingy/7e715ceb1b96f8023bea89a82974a181
   # https://github.com/Syntaf/travis-sphinx
-  - sphinx-build -b html docs/. docs/_build/.
-  - travis-sphinx build --source=docs/_build/
+  # - sphinx-build -b html docs/. docs/_build/.
+  - travis-sphinx build --source=docs/.
 
 after_success:
   - travis-sphinx deploy
