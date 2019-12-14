@@ -28,18 +28,19 @@ before_install:
 
 install:
   # - conda install --yes -c conda-forge --file requirements.txt
-  # - conda create -n fenicsproject --yes -c conda-forge fenics mshr pybind11 pip
-  # - source activate fenicsproject
   - conda list
   - pip install -r requirements.txt
-  - pip install travis-sphinx nose-timer
+  - pip install --user travis-sphinx
+  - export PATH=$HOME/.local/bin:$PATH
 
 script:
-  - python pack.py
+  - python run.py -r
+  - pytest
 #  - xvfb-run make test
-#  - "./docs/update_apidocs.sh"
-#  - nosetests -v --with-timer --with-coverage --cover-erase --cover-inclusive --cover-package=pySDC/core,pySDC/implementations,pySDC/helpers,pySDC/tutorial,pySDC/projects --cover-html --cover-html-dir=doc/build/test_coverage pySDC/tests
-#  - travis-sphinx build
+# https://gist.github.com/kemingy/7e715ceb1b96f8023bea89a82974a181
+# https://github.com/Syntaf/travis-sphinx
+ - sphinx-build -b html docs/. /docs/_build/.
+ - travis-sphinx build --source=/docs/_build/
 
-#after_success:
-#  - travis-sphinx deploy
+after_success:
+    - travis-sphinx deploy
