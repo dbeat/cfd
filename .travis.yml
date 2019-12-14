@@ -13,10 +13,6 @@ addons:
     packages:
 
 before_install:
-  # https://lxml.de/installation.html
-  - sudo apt-get install python3-lxml
-  - sudo apt-get install libxml2-dev libxslt-dev python-dev
-  - sudo apt-get build-dep python3-lxml
   - wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME/miniconda3.sh
   - chmod +x $HOME/miniconda3.sh
   - "$HOME/miniconda3.sh -b;"
@@ -25,6 +21,10 @@ before_install:
   - conda install --yes -c menpo vtk=8
   - conda install --yes -c anaconda pyqt
   - conda install --yes -c conda-forge fenics mshr gmsh pybind11 pip
+  # https://lxml.de/installation.html
+  - sudo apt-get install python3-lxml
+  - sudo apt-get install libxml2-dev libxslt-dev python-dev
+  - sudo apt-get build-dep python3-lxml
 
 install:
   # - conda install --yes -c conda-forge --file requirements.txt
@@ -40,7 +40,6 @@ script:
 #  - xvfb-run make test
   # https://gist.github.com/kemingy/7e715ceb1b96f8023bea89a82974a181
   # https://github.com/Syntaf/travis-sphinx
-  # - sphinx-build -b html docs/. docs/_build/.
   - travis-sphinx build -n --source=docs/.
 
 after_success:

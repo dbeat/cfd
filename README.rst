@@ -4,6 +4,9 @@ CFD
 .. image:: https://travis-ci.com/dbeat/cfd.svg?branch=master
     :target: https://travis-ci.com/dbeat/cfd
 
+.. image:: https://codecov.io/gh/dbeat/cfd/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/dbeat/cfd
+
 A FEM code used to investigate CDF problems.
 
 The documentation is available at:  https://dbeat.github.io/cfd
