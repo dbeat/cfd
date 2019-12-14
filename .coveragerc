@@ -1,0 +1,9 @@
+[run]
+include = motor/*
+omit = tests/*, *__init__.py*, *resources.py*
+
+[report]
+omit = tests/*, *__init__.py*, *resources.py*
+
+[html]
+directory = /mnt/c/Users/froy/Projects/outputs/cfd/htmlcov/

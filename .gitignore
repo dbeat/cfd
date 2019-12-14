@@ -1,0 +1,12 @@
+.DS_Store
+__pycache__
+data/
+.coverage
+.cfd
+.idea
+build
+spikes
+src/*.so
+src/.rendered*
+src/*.cppimporthash
+CMakeLists.txt

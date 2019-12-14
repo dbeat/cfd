@@ -1,0 +1,12 @@
+/*
+Customization of the default cascading style sheet for the HTML output of
+Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for more info.
+*/
+
+/* used to change the font color to red */
+.red {
+  color: red;
+    }
+
