@@ -23,13 +23,14 @@ before_install:
 
 install:
   # - conda install --yes -c conda-forge --file requirements.txt
-  - conda create -n fenicsproject --yes -c conda-forge fenics
+  - conda create -n fenicsproject --yes -c conda-forge fenics pybind11 pip
   - source activate fenicsproject
   - conda list
+  - pip install -r requirements.txt
   - pip install travis-sphinx nose-timer
 
 script:
-  - python -c "import dolfin"
+  - python pack.py
 #  - "./docs/update_apidocs.sh"
 #  - nosetests -v --with-timer --with-coverage --cover-erase --cover-inclusive --cover-package=pySDC/core,pySDC/implementations,pySDC/helpers,pySDC/tutorial,pySDC/projects --cover-html --cover-html-dir=doc/build/test_coverage pySDC/tests
 #  - travis-sphinx build

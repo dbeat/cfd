@@ -4,13 +4,8 @@ meshio==3.1.1
 numpy==1.16.2
 Pint==0.9
 pygmsh==6.0.2
-PyQt5==5.13.1
-PyQt5-sip==4.19.19
 pytest==5.1.2
 pytest-cov==2.7.1
-scipy==1.3.1
-Sphinx==2.2.0
 sphinxcontrib-bibtex==1.0.0
-sympy==1.4
 Unipath==1.1
 vtk==8.1.2
