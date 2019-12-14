@@ -20,12 +20,13 @@ before_install:
   - "$HOME/miniconda3.sh -b;"
   - export PATH=/home/travis/miniconda3/bin:$PATH
   - conda update --yes -n base -c defaults conda
-  - conda install -c menpo vtk=8
+  - conda install --yes -c menpo vtk=8
+  - conda install --yes -c conda-forge fenics mshr pybind11 pip
 
 install:
   # - conda install --yes -c conda-forge --file requirements.txt
-  - conda create -n fenicsproject --yes -c conda-forge fenics mshr pybind11 pip
-  - source activate fenicsproject
+  # - conda create -n fenicsproject --yes -c conda-forge fenics mshr pybind11 pip
+  # - source activate fenicsproject
   - conda list
   - pip install -r requirements.txt
   - pip install travis-sphinx nose-timer
