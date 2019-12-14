@@ -35,12 +35,17 @@ install:
 
 script:
   - python run.py -r
-  - pytest
+  # https://dev.to/j0nimost/using-codecov-with-travis-ci-pytest-cov-1dfj
+  - py.test  --cov-report term --cov=app/test/
 #  - xvfb-run make test
-# https://gist.github.com/kemingy/7e715ceb1b96f8023bea89a82974a181
-# https://github.com/Syntaf/travis-sphinx
+  # https://gist.github.com/kemingy/7e715ceb1b96f8023bea89a82974a181
+  # https://github.com/Syntaf/travis-sphinx
  - sphinx-build -b html docs/. /docs/_build/.
  - travis-sphinx build --source=/docs/_build/
 
+env:
+  - CODECOV_TOKEN=<token> #IF ONLY YOU HAVE A PRIVATE REPOSITORY
+
 after_success:
     - travis-sphinx deploy
+    - codecov
