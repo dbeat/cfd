@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>tests.cfd.models_2d.axi_symmetric.test_poiseuille_axi &#8212; cfd  documentation</title>
+    <link rel="stylesheet" href="../../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+<link rel="stylesheet" type="text/css"
+     href="../../../../../_static/style.css" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../../../index.html">
+              <img class="logo" src="../../../../../_static/logo.png" alt="Logo"/>
+            </a></p><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../theory.html">Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../package/index.html">Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../bibliography.html">References</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for tests.cfd.models_2d.axi_symmetric.test_poiseuille_axi</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">tests.models_2d.axi_symmetric.test_poiseuille_axi.py</span>
+<span class="sd">November 14, 2019</span>
+<span class="sd">@author Indigo Technologies Inc.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">cfd.models_2d.axi_symmetric.poiseuille_axi</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">TEST_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span><span class="o">.</span><span class="n">ancestor</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">REF_DIR</span> <span class="o">=</span> <span class="n">TEST_DIR</span><span class="o">.</span><span class="n">child</span><span class="p">(</span><span class="s2">&quot;references&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="TestPoiseuilleAxi"><a class="viewcode-back" href="../../../../../package/tests_cfd.html#tests.cfd.models_2d.axi_symmetric.test_poiseuille_axi.TestPoiseuilleAxi">[docs]</a><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="s2">&quot;skipped for now&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">TestPoiseuilleAxi</span><span class="p">:</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="TestPoiseuilleAxi.test_geom"><a class="viewcode-back" href="../../../../../package/tests_cfd.html#tests.cfd.models_2d.axi_symmetric.test_poiseuille_axi.TestPoiseuilleAxi.test_geom">[docs]</a>    <span class="k">def</span> <span class="nf">test_geom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fix</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Test the area of the axisymmetric geometry using numerical</span>
+<span class="sd">        integration.</span>
+
+<span class="sd">        :param fix: The fixture --see</span>
+<span class="sd">          :func:`fix&lt;tests.cfd.models_2d.axi_symmetric.conftest.fix&gt;`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">p_axi</span> <span class="o">=</span> <span class="n">fix</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;p_axi&#39;</span><span class="p">)</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="n">p_axi</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">desired</span> <span class="o">=</span> <span class="p">(</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">magnitude</span>
+        <span class="n">mesh</span> <span class="o">=</span> <span class="n">p_axi</span><span class="o">.</span><span class="n">_mesh</span>
+        <span class="n">dom</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">cpp</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">MeshFunctionSizet</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">mvc_dom</span><span class="p">())</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">Measure</span><span class="p">(</span><span class="s2">&quot;dx&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span> <span class="n">subdomain_data</span><span class="o">=</span><span class="n">dom</span><span class="p">)</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span><span class="n">dolfin</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span> <span class="o">*</span> <span class="n">dx</span><span class="p">)</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">desired</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TestPoiseuilleAxi.test_strain_rate_tensor"><a class="viewcode-back" href="../../../../../package/tests_cfd.html#tests.cfd.models_2d.axi_symmetric.test_poiseuille_axi.TestPoiseuilleAxi.test_strain_rate_tensor">[docs]</a>    <span class="k">def</span> <span class="nf">test_strain_rate_tensor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fix</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param fix: The fixture --see</span>
+<span class="sd">          :func:`fix&lt;tests.cfd.models_2d.axi_symmetric.conftest.fix&gt;`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">p_axi</span> <span class="o">=</span> <span class="n">fix</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;p_axi&#39;</span><span class="p">)</span>
+        <span class="n">mesh</span> <span class="o">=</span> <span class="n">p_axi</span><span class="o">.</span><span class="n">_mesh</span>
+
+        <span class="c1"># define a finite element space</span>
+        <span class="n">fes</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">VectorFunctionSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="s1">&#39;CG&#39;</span><span class="p">,</span> <span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">dolfin</span><span class="o">.</span><span class="n">TrialFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+        <span class="n">epsilon</span> <span class="o">=</span> <span class="n">p_axi</span><span class="o">.</span><span class="n">strain_rate_tensor</span><span class="p">(</span><span class="n">u</span><span class="p">)</span></div></div>
+        <span class="c1"># project inner(epsilon, epsilon) on the finite element space</span>
+        <span class="c1"># a = dolfin.project(dolfin.inner(epsilon, epsilon), fes)</span>
+        <span class="c1"># a = dolfin.interpolate(epsilon, fes)</span>
+        <span class="c1"># Dump solution to file in VTK format</span>
+        <span class="c1"># file = dolfin.File(OUT_DIR.child(&quot;a.pvd&quot;))</span>
+        <span class="c1"># file &lt;&lt; a</span>
+        <span class="c1"># actual = 1.</span>
+        <span class="c1"># desired = 2.</span>
+        <span class="c1"># np.testing.assert_almost_equal(actual, desired, 7, &#39;error&#39;, True)</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Francois Roy.
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

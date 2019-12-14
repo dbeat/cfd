@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tests Utils &#8212; cfd  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="References" href="../bibliography.html" />
+    <link rel="prev" title="Tests CFD" href="tests_cfd.html" /> 
+<link rel="stylesheet" type="text/css"
+     href="../_static/style.css" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/logo.png" alt="Logo"/>
+            </a></p><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory.html">Theory</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Packages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cfd.html">CFD Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utils Modules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#tests">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#tests-coverage">Tests Coverage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">References</a></li>
+</ul>
+
+
+  <h3><a href="../index.html">Page Content</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tests Utils</a><ul>
+<li><a class="reference internal" href="#fixtures">Fixtures</a></li>
+<li><a class="reference internal" href="#module-tests.utils.test_util">test_util</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="tests-utils">
+<h1>Tests Utils<a class="headerlink" href="#tests-utils" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="fixtures">
+<h2>Fixtures<a class="headerlink" href="#fixtures" title="Permalink to this headline">¶</a></h2>
+<p>The following section describes the different fixtures used for testing.</p>
+<span class="target" id="module-tests.utils.conftest"></span><p>tests.utils.conftest.py
+November 14, 2019
+&#64;author Francois Roy</p>
+<dl class="class">
+<dt id="tests.utils.conftest.Container">
+<em class="property">class </em><code class="sig-prename descclassname">tests.utils.conftest.</code><code class="sig-name descname">Container</code><span class="sig-paren">(</span><em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#tests.utils.conftest.Container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dl class="method">
+<dt id="tests.utils.conftest.Container.object">
+<em class="property">property </em><code class="sig-name descname">object</code><a class="headerlink" href="#tests.utils.conftest.Container.object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="tests.utils.conftest.fix">
+<code class="sig-prename descclassname">tests.utils.conftest.</code><code class="sig-name descname">fix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tests/utils/conftest.html#fix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.utils.conftest.fix" title="Permalink to this definition">¶</a></dt>
+<dd><p>The fixture for testing the tree structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The fixture for tree structure tests.
+(<a class="reference internal" href="#tests.utils.conftest.Container" title="tests.utils.conftest.Container"><code class="xref py py-func docutils literal notranslate"><span class="pre">Container</span></code></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tests.utils.test_util">
+<span id="test-util"></span><h2>test_util<a class="headerlink" href="#module-tests.utils.test_util" title="Permalink to this headline">¶</a></h2>
+<p>tests.utils.test_util.py
+November 14, 2019
+&#64;author Francois Roy</p>
+<dl class="class">
+<dt id="tests.utils.test_util.TestUtil">
+<em class="property">class </em><code class="sig-prename descclassname">tests.utils.test_util.</code><code class="sig-name descname">TestUtil</code><a class="reference internal" href="../_modules/tests/utils/test_util.html#TestUtil"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.utils.test_util.TestUtil" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="tests.utils.test_util.TestUtil.test_load">
+<code class="sig-name descname">test_load</code><span class="sig-paren">(</span><em class="sig-param">fix</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tests/utils/test_util.html#TestUtil.test_load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.utils.test_util.TestUtil.test_load" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fix</strong> – The fixture –see <a class="reference internal" href="#tests.utils.conftest.fix" title="tests.utils.conftest.fix"><code class="xref py py-func docutils literal notranslate"><span class="pre">fix</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2020, Francois Roy.
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
