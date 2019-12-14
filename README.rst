@@ -6,9 +6,8 @@ CFD
 
 A FEM code used to investigate CDF problems.
 
-The documentation is available at: 'file://'
+The documentation is available at:  https://dbeat.github.io/cfd
 
-Code coverage: 'file://'
 
 Requirements
 ------------
