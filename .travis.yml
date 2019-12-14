@@ -23,15 +23,15 @@ before_install:
   - export PATH=/home/travis/miniconda3/bin:$PATH
   - conda update --yes -n base -c defaults conda
   - conda install --yes -c menpo vtk=8
-  - conda install --yes -c conda-forge fenics mshr pybind11 pip
+  - conda install --yes -c conda-forge fenics mshr gmsh pybind11 pip
   - conda install --yes -c anaconda pyqt
 
 install:
   # - conda install --yes -c conda-forge --file requirements.txt
   - conda list
   - pip install -r requirements.txt
-  # - pip install --user travis-sphinx
-  # - export PATH=$HOME/.local/bin:$PATH
+  - pip install --user travis-sphinx
+  - export PATH=$HOME/.local/bin:$PATH
 
 script:
   - python run.py -r
@@ -41,8 +41,8 @@ script:
   # https://gist.github.com/kemingy/7e715ceb1b96f8023bea89a82974a181
   # https://github.com/Syntaf/travis-sphinx
   - sphinx-build -b html docs/. /docs/_build/.
- # - travis-sphinx build --source=/docs/_build/
+  - travis-sphinx build --source=/docs/_build/
 
 after_success:
-  # - travis-sphinx deploy
+  - travis-sphinx deploy
   - codecov
