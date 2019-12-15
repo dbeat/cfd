@@ -77,7 +77,7 @@ class Model(Node):
                 c = Component(tag, dim, parent=parent)
             elif type_info == GEOMETRY_FEATURE:
                 geom_type = child.get('attributes')['geom_type']
-                cls = getattr(import_module('cfd'), type_info.capitalize())
+                cls = getattr(import_module('fem'), type_info.capitalize())
                 c = cls(tag, parent=parent)
             else:
                 cls = getattr(import_module('fem'), type_info.capitalize())

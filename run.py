@@ -7,12 +7,12 @@ November 14, 2019
 import sys
 import click
 import traceback
+from PyQt5.QtWidgets import QApplication, QDesktopWidget
+from gui.app import App
 
-from utils import logging
+from fem import *
 from resources import __application__, __version__
 from cfd.models_2d.axi_symmetric.poiseuille_axi import *
-from cfd.models_2d.poiseuille_plane import *
-from fem import *
 
 
 def print_version(ctx, param, value):
@@ -36,8 +36,8 @@ def print_version(ctx, param, value):
 
 
 @click.command()
-@click.option('-d', '--db', is_flag=True,
-              help="Show models database interface.")
+@click.option('-g', '--gui', is_flag=True,
+              help="Start the graphical user interface.")
 @click.option('-r', '--run', is_flag=True,
               help="Run the batch job and exit.")
 @click.option(
@@ -45,18 +45,25 @@ def print_version(ctx, param, value):
     is_flag=True, help='Show version information and exit.',
     callback=print_version, expose_value=False, is_eager=True,
 )
-def main(db, run):
-    r"""Run a batch job, show status and log, solve results to file after
-    each time step, write report to file and save file in MongoDB database.
-
-    The database GUI can be accessed after the job has ran, using the
-    ``db`` option.
+def main(gui, run):
+    r"""CFD: A user interface to solve CFD problems using FEniCS
     """
-    if db:
-        # launch the db interface in the default browser. Load new models
-        # stats and results into the database if exists.
-        # show model list, add model, edit/remove model, compare models
-        logging.info("Not implemented yet.")
+    if gui:
+        pass
+        # application = QApplication(sys.argv)
+        # application.setStyle("cleanLooks")
+        # try:
+        #    # TODO: check os and pass the name to application
+        #    window = App(app=application)
+        #    desktop = QDesktopWidget().availableGeometry()
+        #    width = (desktop.width() - window.width()) / 2
+        #    height = (desktop.height() - window.height()) / 2
+        #    window.show()
+        #    window.move(width, height)
+        #    sys.exit(application.exec_())
+        # except Exception as exc:
+        #    print(exc)
+        #    traceback.print_tb(sys.exc_info()[2])
     elif run:
         # define batch job here
         # model list with parameters
@@ -64,9 +71,9 @@ def main(db, run):
         # selected results are saved on file at each time steps, the job can
         # be stopped and resumed at anytime, starting from the last
         # saved solution.
-        models = [PoiseuillePlane()]  # PoiseuilleAxi('pa1')]
-        for model in models:
-            model.compute()
+        models = [PoiseuilleAxi('pa1')]
+        for m in models:
+            m.compute()
             # p, uz = model.exact_solution()
             # print(p)
             # print(uz)
@@ -76,5 +83,4 @@ def main(db, run):
 
 
 if __name__ == '__main__':
-
     main()

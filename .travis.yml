@@ -20,7 +20,8 @@ before_install:
   - conda update --yes -n base -c defaults conda
   - conda install --yes -c menpo vtk=8
   - conda install --yes -c anaconda pyqt
-  - conda install --yes -c conda-forge fenics mshr gmsh pybind11 pip
+  - conda install --yes -c conda-forge gmsh pybind11 pip
+  - conda install -c conda-forge/label/cf201901 fenics mshr
   # https://lxml.de/installation.html
   - sudo apt-get install python3-lxml
   - sudo apt-get install libxml2-dev libxslt-dev python-dev libhdf5-dev
@@ -30,8 +31,8 @@ install:
   # - conda install --yes -c conda-forge --file requirements.txt
   - conda list
   - pip install -r requirements.txt
-  - pip install lxml codecov h5py
-  # - pip install --no-binary=h5py h5py 
+  - pip install lxml codecov # h5py
+  - pip install --no-binary=h5py h5py
   - pip install --user travis-sphinx
   - export PATH=$HOME/.local/bin:$PATH
 

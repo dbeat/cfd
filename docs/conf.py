@@ -7,10 +7,6 @@ November 14, 2019
 import os
 import sys
 
-# In src dir type:
-# sphinx-build -b html doc/. ../outputs/motor/_build/.
-
-
 # Get the project root dir, which is the parent dir of this
 cwd = os.getcwd()
 project_root = os.path.dirname(cwd)
@@ -25,7 +21,7 @@ sys.path.insert(1, os.path.abspath('./images/'))
 # sys.path.insert(1, DOC_IMAGE_DIR
 
 # General information about the project.
-project = u'cfd'
+project = u'fem'
 copyright = u'2020, Francois Roy'
 author = u'Indigo Francois Roy'
 html_logo = 'images/logo.png'

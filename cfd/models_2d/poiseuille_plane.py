@@ -87,7 +87,7 @@ class PoiseuillePlane(fem.Model):
         mat.add('water', 'x[0] <= 0.5 + tol', 'dynamic_viscosity', mu)
 
         # set physics
-        phys = self.component('comp').create(PHYSICS, 'cfd')
+        phys = self.component('comp').create(PHYSICS, 'fem')
         # add laminar flow
         lam = phys.create(LAMINAR_FLOW, 'lam')  # fluid props from materials
         # create boundary conditions

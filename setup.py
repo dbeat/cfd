@@ -20,6 +20,6 @@ setup(
     author=metadata['__author__'],
     author_email=metadata['__authoremail__'],
     license='MIT',
-    packages=['cfd', 'fem', 'gui', 'resources', 'src', 'utils'],
+    packages=['fem', 'fem', 'gui', 'resources', 'src', 'utils'],
     zip_safe=False
 )

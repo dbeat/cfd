@@ -48,5 +48,5 @@ Q_ = ureg.Quantity
 
 # PATHS
 ROOT_DIR = Path(os.path.abspath(__file__)).ancestor(2)
-APP_DIR = ROOT_DIR.child(".cfd")
+APP_DIR = ROOT_DIR.child(".fem")
 OUT_DIR = ROOT_DIR.child('outputs')
