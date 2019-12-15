@@ -3,6 +3,11 @@ services:
   - docker
   - xvfb
 
+language: python
+
+python:
+  - '3.7'
+
 branches:
     only:
         - master
@@ -13,7 +18,20 @@ notifications:
 before_install:
   - docker pull quay.io/fenicsproject/stable:latest
 
-script:
-  - docker run -ti quay.io/fenicsproject/stable:latest python3 -c "import dolfin;print(dolfin.__version__)"
-  # - docker run --rm -P -v `pwd`:/home/fenics/shared -w /home/fenics/shared quay.io/fenicsproject/stable:2017.2.0 "python3 -m pytest -v -k '_ci_'"
+install:
+  - pip install codecov
+  - pip install --user travis-sphinx
+  - export PATH=$HOME/.local/bin:$PATH
 
+script:
+  - docker run -ti quay.io/fenicsproject/stable:current python3 -c "import dolfin;print(dolfin.__version__)
+  # - docker run --rm -P -v `pwd`:/home/fenics/shared -w /home/fenics/shared quay.io/fenicsproject/stable:2017.2.0 "python3 -m pytest -v -k '_ci_'"
+  # - py.test  --cov-report term --cov=.
+  #  - xvfb-run make test
+  # https://gist.github.com/kemingy/7e715ceb1b96f8023bea89a82974a181
+  # https://github.com/Syntaf/travis-sphinx
+  - travis-sphinx build -n --source=docs/.
+
+after_success:
+  - travis-sphinx deploy
+  # - codecov

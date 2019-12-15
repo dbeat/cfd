@@ -8,9 +8,9 @@ import pytest
 from collections import namedtuple
 
 import dolfin
-from utils import *
-from fem.geom_feats.utils import check_dimension
-import fem
+# from utils import *
+# from fem.geom_feats.utils import check_dimension
+# import fem
 
 Container = namedtuple('Container', ['object'])
 
@@ -22,5 +22,6 @@ def fix():
     :return: The fixture for fem tests.
       (:func:`Container<tests.fem.conftest.Container>`)
     """
-    m = fem.Model('m')
+    # m = fem.Model('m')
+    m = dolfin.__version__
     return Container({'m': m})
