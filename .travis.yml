@@ -16,11 +16,11 @@ notifications:
   email: false
 
 before_install:
-  - docker pull quay.io/fenicsproject/stable:latest
+  - docker pull quay.io/fenicsproject/stable:current
 
 install:
   - pip install codecov
-  - pip install --user travis-sphinx
+  - pip install travis-sphinx
   - export PATH=$HOME/.local/bin:$PATH
 
 script:
