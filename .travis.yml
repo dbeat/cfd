@@ -17,23 +17,22 @@ notifications:
 
 before_install:
   - docker pull quay.io/fenicsproject/stable:latest
-  - docker run -ti -v `pwd`:/home/fenics/shared --name fc quay.io/fenicsproject/stable
-  - docker exec fc ls
+  - docker run -dti -v `pwd`:/home/fenics/shared --name fc quay.io/fenicsproject/stable
   - docker exec fc pip3 install pytest codecov travis-sphinx
 
 install:
-  - pip install codecov
-  - pip install travis-sphinx
-  - export PATH=$HOME/.local/bin:$PATH
+  #- pip install codecov
+  #- pip install travis-sphinx
+  #- export PATH=$HOME/.local/bin:$PATH
 
 script:
   # - py.test  --cov-report term --cov=.
   #  - xvfb-run make test
   # https://gist.github.com/kemingy/7e715ceb1b96f8023bea89a82974a181
   # https://github.com/Syntaf/travis-sphinx
-  - travis-sphinx build -n --source=docs/.
+  #- travis-sphinx build -n --source=docs/.
   - docker exec fc bash -c "py.test  --cov-report term --cov=."
 
 after_success:
-  - travis-sphinx deploy
-  - codecov
+  #- travis-sphinx deploy
+  #- codecov
