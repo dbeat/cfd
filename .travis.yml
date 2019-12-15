@@ -17,6 +17,9 @@ notifications:
 
 before_install:
   - docker pull quay.io/fenicsproject/stable:current
+  - docker run -ti -v `pwd`:/home/fenics/shared --name fc quay.io/fenicsproject/stable
+  - docker exec fc ls
+  - docker exec fc pip3 install pytest codecov travis-sphinx
 
 install:
   - pip install codecov
@@ -24,13 +27,12 @@ install:
   - export PATH=$HOME/.local/bin:$PATH
 
 script:
-  - docker run -ti quay.io/fenicsproject/stable:current python3 -c "import dolfin;print(dolfin.__version__)
-  # - docker run --rm -P -v `pwd`:/home/fenics/shared -w /home/fenics/shared quay.io/fenicsproject/stable:2017.2.0 "python3 -m pytest -v -k '_ci_'"
   # - py.test  --cov-report term --cov=.
   #  - xvfb-run make test
   # https://gist.github.com/kemingy/7e715ceb1b96f8023bea89a82974a181
   # https://github.com/Syntaf/travis-sphinx
-  - travis-sphinx build -n --source=docs/.
+  # - travis-sphinx build -n --source=docs/.
+  - docker exec fc bash -c "py.test  --cov-report term --cov=."
 
 after_success:
   - travis-sphinx deploy
