@@ -4,11 +4,11 @@ resources.__init__.py
 November 14, 2019
 @author Francois Roy
 """
-__application__ = 'fem'
+__application__ = 'cfd'
 __author__ = 'Francois Roy'
 __authoremail__ = 'frns.roy@gmail.com'
-__short_description__ = 'A user interface used to investigate CDF problems ' \
-                        'with FEniCS.'
+__short_description__ = 'An interface to investigate CDF problems using ' \
+                        'FEniCS.'
 __version__ = '2020.1'
 
 
