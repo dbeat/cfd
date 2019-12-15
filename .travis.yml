@@ -13,19 +13,23 @@ addons:
     packages:
 
 before_install:
+  # https://lxml.de/installation.html
+  - sudo apt-get install python3-lxml
+  - sudo apt-get install libxml2-dev libxslt-dev python-dev libhdf5-dev
+  - sudo apt-get build-dep python3-lxml
+  # conda
   - wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME/miniconda3.sh
   - chmod +x $HOME/miniconda3.sh
   - "$HOME/miniconda3.sh -b;"
   - export PATH=/home/travis/miniconda3/bin:$PATH
   - conda update --yes -n base -c defaults conda
+  # for testing
   - conda install --yes -c menpo vtk=8
   - conda install --yes -c anaconda pyqt
+  # - conda config --add channels conda-forge
+  - conda install --yes conda-forge fenics fenics-dijitso fenics-dolfin fenics-ffc fenics-fiat fenics-libdolfin fenics-ufl
   - conda install --yes -c conda-forge gmsh pybind11 pip
-  - conda install -c conda-forge/label/cf201901 fenics mshr
-  # https://lxml.de/installation.html
-  - sudo apt-get install python3-lxml
-  - sudo apt-get install libxml2-dev libxslt-dev python-dev libhdf5-dev
-  - sudo apt-get build-dep python3-lxml
+
 
 install:
   # - conda install --yes -c conda-forge --file requirements.txt
