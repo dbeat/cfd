@@ -1,56 +1,19 @@
-# sudo: false
 dist: bionic
 services:
+  - docker
   - xvfb
 
-language: python
+branches:
+    only:
+        - master
 
-python:
-  - '3.7'
-
-addons:
-  apt:
-    packages:
+notifications:
+  email: false
 
 before_install:
-  # https://lxml.de/installation.html
-  - sudo apt-get install python3-lxml
-  - sudo apt-get install libxml2-dev libxslt-dev python-dev libhdf5-dev
-  - sudo apt-get build-dep python3-lxml
-  # conda
-  - wget http://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME/miniconda3.sh
-  - chmod +x $HOME/miniconda3.sh
-  - "$HOME/miniconda3.sh -b;"
-  - export PATH=/home/travis/miniconda3/bin:$PATH
-  - conda update --yes -n base -c defaults conda
-  # for testing
-  - conda install --yes -c menpo vtk=8
-  - conda install --yes -c anaconda pyqt
-  # - conda config --add channels conda-forge
-  - conda install --yes -c conda-forge/label/cf201901 -c conda-forge fenics
-  # - conda install --yes conda-forge fenics fenics-dijitso fenics-dolfin fenics-ffc fenics-fiat fenics-libdolfin fenics-ufl
-  # print version
-  - python -c "import dolfin;print(dolfin.__version__)"
-  - conda install --yes -c conda-forge gmsh pybind11 pip
-
-
-install:
-  # - conda install --yes -c conda-forge --file requirements.txt
-  - conda list
-  - pip install -r requirements.txt
-  - pip install lxml codecov h5py
-  # - pip install --no-binary=h5py h5py
-  - pip install --user travis-sphinx
-  - export PATH=$HOME/.local/bin:$PATH
+  - docker pull quay.io/fenicsproject/stable:latest
 
 script:
-  # https://dev.to/j0nimost/using-codecov-with-travis-ci-pytest-cov-1dfj
-  - py.test  --cov-report term --cov=.
-#  - xvfb-run make test
-  # https://gist.github.com/kemingy/7e715ceb1b96f8023bea89a82974a181
-  # https://github.com/Syntaf/travis-sphinx
-  - travis-sphinx build -n --source=docs/.
+  - docker run -ti quay.io/fenicsproject/stable:latest python3 -c "import dolfin;print(dolfin.__version__)"
+  # - docker run --rm -P -v `pwd`:/home/fenics/shared -w /home/fenics/shared quay.io/fenicsproject/stable:2017.2.0 "python3 -m pytest -v -k '_ci_'"
 
-after_success:
-  - travis-sphinx deploy
-  - codecov
