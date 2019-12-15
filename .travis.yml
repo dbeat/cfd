@@ -27,7 +27,10 @@ before_install:
   - conda install --yes -c menpo vtk=8
   - conda install --yes -c anaconda pyqt
   # - conda config --add channels conda-forge
-  - conda install --yes conda-forge fenics fenics-dijitso fenics-dolfin fenics-ffc fenics-fiat fenics-libdolfin fenics-ufl
+  - conda install --yes -c conda-forge/label/prerelease -c conda-forge fenics
+  # - conda install --yes conda-forge fenics fenics-dijitso fenics-dolfin fenics-ffc fenics-fiat fenics-libdolfin fenics-ufl
+  # print version
+  - python -c "import dolfin;print(dolfin.__version__)"
   - conda install --yes -c conda-forge gmsh pybind11 pip
 
 
